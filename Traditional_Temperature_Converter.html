@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+     
+
+        /* Added center align and navy background for the heading */
+        h1{
+            text-align: center;
+            background-color: #45a049;
+            color: white;
+            padding: 10px;
+        }
+        form {
+          width: 400px;
+          margin: 0 auto;
+          padding: 20px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          text-align: center;
+        }
+        label {
+          font-size: 18px;
+          font-weight: 600;
+          margin-bottom: 10px;
+          display: block;
+        }
+        input[type=text], select {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+        button {
+          width: 100%;
+          background-color: #4CAF50;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        button:hover {
+          background-color: #45a049;
+        }
+        #output {
+          margin-top: 20px;
+          font-size: 18px;
+          font-weight: 600;
+          text-align: center;
+        }
+      </style>
+    <title>FAST Temperature Converter</title>
+</head>
+    
+<body>
+    <h1>FAST Temperature Converter</h1>
+    <form>
+        <label>Enter Temperature Value: <input type="text" id="temp"></label>
+        <br>
+        <label>Enter the unit of temperature: 
+          <select id="unit">
+            <option value="C">Celsius</option>
+            <option value="F">Fahrenheit</option>
+          </select>
+        </label>
+        <br>
+        <br>
+        <button type="button" onclick="convertTemperature()">Convert</button>
+      </form>
+      
+      <div id="output"></div>
+      
+      <script>
+        function convertTemperature() {
+          let temp = document.getElementById("temp").value;
+          let unit = document.getElementById("unit").value;
+          let convertedTemp;
+          let convertedUnit;
+      
+          if (isNaN(temp) || temp === "" ) {
+            alert("Please enter a valid number");
+          } else {
+            if (unit === "C") {
+              convertedTemp = (temp * 9/5) + 32;
+              convertedUnit = "Fahrenheit";
+            } else if (unit === "F") {
+              convertedTemp = (temp - 32) * 5/9;
+              convertedUnit = "Celsius";
+            }
+            if (convertedTemp) {
+              document.getElementById("output").innerHTML = temp + "&#8451; " + unit + " is equal to " + convertedTemp + "&#8457; " + convertedUnit + ".";
+            }
+          }
+        }
+      </script>
+      
+</body>
+</html>

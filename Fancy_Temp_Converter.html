@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>FAST Temperature Converter</title>
+</head>
+<body>
+    
+<div class="text-center bg-navy text-white p-3 mb-3">
+  <h1>FAST Temperature Converter</h1>
+</div>
+
+<form class="container">
+  <div class="form-group">
+    <label for="temp">Enter Temperature Value:</label>
+    <input type="text" class="form-control" id="temp">
+  </div>
+  <div class="form-group">
+    <label for="unit">Enter the unit of temperature:</label>
+    <select class="form-control" id="unit">
+      <option value="C">Celsius</option>
+      <option value="F">Fahrenheit</option>
+    </select>
+  </div>
+  <button type="button" class="btn btn-primary" onclick="convertTemperature()">Convert</button>
+</form>
+
+<div class="container" id="output"></div>
+
+<script>
+    function convertTemperature() {
+      let temp = document.getElementById("temp").value;
+      let unit = document.getElementById("unit").value;
+      let convertedTemp;
+      let convertedUnit;
+  
+      if (isNaN(temp) || temp === "" ) {
+        alert("Please enter a valid number");
+      } else {
+        if (unit === "C") {
+          convertedTemp = (temp * 9/5) + 32;
+          convertedUnit = "Fahrenheit";
+        } else if (unit === "F") {
+          convertedTemp = (temp - 32) * 5/9;
+          convertedUnit = "Celsius";
+        }
+        if (convertedTemp) {
+          document.getElementById("output").innerHTML = temp + "&#8451; " + unit + " is equal to " + convertedTemp + "&#8457; " + convertedUnit + ".";
+        }
+      }
+    }
+  </script>
+  
+</body>
+</html>
