@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock-Paper-Scissors Game</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .title {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .score {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .choices {
+      display: flex;
+      justify-content: space-between;
+      width: 300px;
+    }
+    .choice {
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      cursor: pointer;
+    }
+    .choice:hover {
+      background-color: lightgray;
+    }
+    .result {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Rock-Paper-Scissors Game</div>
+    <div class="score">Player 1: <span id="p1-score"></span> | Player 2: <span id="p2-score"></span></div>
+    <div class="choices">
+      <div class="choice" id="rock" onclick="playerChoice(this.id)">Rock</div>
+      <div class="choice" id="paper" onclick="playerChoice(this.id)">Paper</div>
+      <div class="choice" id="scissors" onclick="playerChoice(this.id)">Scissors</div>
+    </div>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    
+const choices = ["rock", "paper", "scissors"];
+let player1 = prompt("Please Enter Player1 Name : ");
+let player2 = prompt("Please Enter Player1 Name : ");
+let player1Score = 0;
+let player2Score = 0;
+let result = "";
+
+function playRound(player1Choice, player2Choice) {
+  if (player1Choice === player2Choice) {
+    result = "Tie";
+  } else if (
+    (player1Choice === "rock" && player2Choice === "scissors") ||
+    (player1Choice === "paper" && player2Choice === "rock") ||
+    (player1Choice === "scissors" && player2Choice === "paper")
+  ) {
+    result = "Player 1 : " + player1 + " wins!";
+    player1Score++;
+  } else {
+    result = "Player 2: " + player2 + " wins!";
+    player2Score++;
+  }
+}
+
+function playGame() {
+  let player1Choice = prompt(`Player 1: ${player1} make your choice (rock, paper, or scissors):`).toLowerCase();
+  while (!choices.includes(player1Choice)) {
+    player1Choice = prompt("Invalid choice. Please enter rock, paper, or scissors:").toLowerCase();
+  }
+
+  let player2Choice = prompt(`Player 2: ${player2} make your choice (rock, paper, or scissors):`).toLowerCase();
+  while (!choices.includes(player2Choice)) {
+    player2Choice = prompt("Invalid choice. Please enter rock, paper, or scissors:").toLowerCase();
+  }
+
+  playRound(player1Choice, player2Choice);
+
+  console.log(result);
+  console.log(`Player 1:${player1} score is ${player1Score} | Player 2: ${player2} score is ${player2Score}`);
+  
+  let playAgain = prompt("Do you want to play again? (yes or no)").toLowerCase();
+  while (playAgain !== "yes" && playAgain !== "no") {
+    playAgain = prompt("Please enter yes or no.").toLowerCase();
+  }
+
+  if (playAgain === "yes") {
+    playGame();
+  }
+}
+
+playGame();
+</script>
+</body>
+</html>
