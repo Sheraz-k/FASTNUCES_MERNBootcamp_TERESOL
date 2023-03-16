@@ -1,5 +1,10 @@
 {
+  "name": "main_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "HelloWorld.js",
   "dependencies": {
-    "prompt-sync": "^4.2.0"
+    "lodash": "^4.17.21",
+    "node-fetch":"^3.3.0"
   }
 }
